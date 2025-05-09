@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ConstructBill Image Uploader</title>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 320px;
+      padding: 15px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+    
+    h2 {
+      margin-top: 0;
+      color: #2d5bff;
+      font-size: 18px;
+    }
+    
+    .section {
+      margin-bottom: 15px;
+    }
+    
+    .button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: #4a7aff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    
+    .button:hover {
+      background-color: #3861d8;
+    }
+    
+    .button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    
+    #fileInputContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed #ccc;
+      border-radius: 4px;
+      padding: 20px;
+      margin: 10px 0;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    
+    #fileInputContainer:hover {
+      border-color: #4a7aff;
+    }
+    
+    #fileInputContainer.dragover {
+      border-color: #4a7aff;
+      background-color: #f0f5ff;
+    }
+    
+    #imageInput {
+      display: none;
+    }
+    
+    #preview {
+      max-width: 100%;
+      max-height: 200px;
+      margin-top: 15px;
+      border-radius: 4px;
+      display: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .status {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      display: none;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .info {
+      background-color: #e2f0fd;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+    
+    .page-status {
+      font-size: 12px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      padding: 5px;
+      text-align: center;
+      border-radius: 4px;
+    }
+    
+    .not-available {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .available {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .footer {
+      margin-top: 15px;
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>ConstructBill Image Uploader</h2>
+  
+  <div id="pageStatus" class="page-status"></div>
+  
+  <div class="section">
+    <div id="fileInputContainer">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 14V18C21 19.1046 20.1046 20 19 20H5C3.89543 20 3 19.1046 3 18V14" stroke="#4a7aff" stroke-width="2"/>
+        <path d="M12 3L12 14" stroke="#4a7aff" stroke-width="2"/>
+        <path d="M8 7L12 3L16 7" stroke="#4a7aff" stroke-width="2"/>
+      </svg>
+      <p>Drop image here or click to browse</p>
+      <input type="file" id="imageInput" accept="image/*">
+    </div>
+    
+    <img id="preview" src="" alt="Image preview">
+  </div>
+  
+  <button id="sendButton" class="button" disabled>Send to ConstructBill</button>
+  <button id="captureTab" class="button">Capture Visible Tab</button>
+  
+  <div id="status" class="status"></div>
+  
+  <div class="footer">
+    ConstructBill Image Uploader v1.0<br>
+    Click on any image and use "Send to ConstructBill" in the context menu
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
